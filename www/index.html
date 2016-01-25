@@ -13,24 +13,7 @@
 -->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
 
-<style>
-*{padding:0 !important;margin:0 !important;}
-body{background:#00b599;overflow-x: hidden;}
-.btn {
-  cursor: pointer;
-  height: 50%;
-  position: absolute;
-  width: 33.333%;
-  background-color:red;
-}
-.btn1{top:0px;left:0px;}
-.btn2{top:0px;left:33.33%;}
-.btn3{top:0px;left:66.66%;}
-.btn4{top:50%;left:0px;}
-.btn5{top:50%;left:33.33%;}
-.btn6{top:50%;left:66.66%;}
 
-</style>
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/console.log.js"></script>
@@ -231,6 +214,20 @@ body{background:#00b599;overflow-x: hidden;}
 		};
 		$(window).load(function() {
 			$(".mypreload").html("");
+			
+			
+			winH = $(window).height();
+			box_Object = $("#Menu_table");
+			boxH = box_Object.height();
+			delta = 0;
+			if(winH>boxH)
+			{
+				delta = (winH - boxH)/2;
+			}
+			if(delta>65)
+				delta = delta *1.1;
+			box_Object.css("top",delta);
+			//alert(delta);
 		});
 
 		function go_back_index() {
@@ -280,7 +277,34 @@ body{background:#00b599;overflow-x: hidden;}
 		
 		
 		
-		
+<style>
+*{padding:0 !important;margin:0 !important;}
+body{background:#322958;overflow-x: hidden;}
+.btn {
+  cursor: pointer;
+  height: 10%;
+  position: absolute;
+  width: 13%;
+  display:block;
+  background-color:rgba(255,255,255,0.0);
+}
+.btn1 {left: 41%;top: 2%;}
+.btn2 {left: 15%;top: 18%;}
+.btn3 {left: 74%;top: 10%;width: 13%;}
+.btn4 {left: 11%;top: 29%;width: 13%;}
+.btn5 {left: 76.5%;top: 33%;width: 13%;}
+.btn6 {left: 18%;top: 79%;width: 13%;}
+.btn7 {left: 66%;top: 70%; width: 13%;}
+#Menu_table000
+{
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+}
+</style>	
 </head>
 <body onload="init();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="body">
 		<div class="container " id="container" >
@@ -293,20 +317,19 @@ body{background:#00b599;overflow-x: hidden;}
 				<div id="small" class="a1" onclick="openURL('http://app.postermovement.com',false,false);" >
 					<span id="text"><p>بسم الله الرحمن الرحیم</p></span>
 				</div>
-				-->
 				<div onclick="StartScan();">00000000000000000000000000000000</div>
+				-->
 				<div id="Menu_table" style="width:100%;" >
-					<img src="images/index/logo.png" width="100%" alt="">
 					<div id="Menu_btn" style="width:100%;" >
-						<img src="images/index/menu.jpg" width="100%" alt="">
-						<div class="btn btn1" onclick="openURL('http://app.postermovement.com/index.php?option=com_content&view=category&layout=smcms:mahsulat&id=23&Itemid=114',true,false);"></div><!--product-->
-						<div class="btn btn2" onclick="openURL('http://app.postermovement.com/index.php?option=com_content&view=categories&layout=smcms:majmueha&id=10&Itemid=112',true,false);"></div><!--category-->
-						<div class="btn btn3" onclick="openURL('http://app.postermovement.com/index.php?option=com_content&view=category&layout=smcms:news&id=20&Itemid=113',true,false);"></div><!--new-->
-						<div class="btn btn4" onclick="openURL('http://app.postermovement.com/index.php?option=com_blankcomponent&view=default&Itemid=110&template=comment',false,true);"></div><!--contact-->
-						<div class="btn btn5" onclick="loadURL('http://app.postermovement.com/link/hemayat');"></div><!--support-->
-						<div class="btn btn6" onclick="openURL('http://app.postermovement.com/index.php?option=com_rsform&view=rsform&layout=smcms:register&formId=3&Itemid=108&template=comment',false,true);"></div><!--register-->
+						<img src="images/hamid/index.png" width="100%" alt="">
+						<a class="btn btn1" href="" ></a><!--product-->
+						<a class="btn btn2" href="" ></a><!--product-->
+						<a class="btn btn3" href="" ></a><!--product-->
+						<a class="btn btn4" href="" ></a><!--product-->
+						<a class="btn btn5" href="" ></a><!--product-->
+						<a class="btn btn6" href="" ></a><!--product-->
+						<a class="btn btn7" href="" ></a><!--product-->
 					</div>
-					<img src="images/index/url.png" onclick='loadURL("http://www.postermovement.com");' width="100%" border="0" alt="">
 				</div>
 		</div>
 </body>
