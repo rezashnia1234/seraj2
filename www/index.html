@@ -38,7 +38,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 // START push Notification :////////////////////////////////////////////////////////////////
-	 var register_for_notifs;// = window.localStorage.getItem('register_for_notifs');
+	 var register_for_notifs;// = window.sessionStorage.getItem('register_for_notifs');
 	 function onNotificationGCM(e) {
 		//alert("uuuuuu");
 		//$("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
@@ -62,7 +62,7 @@
 							{
 								//last_articles_version = text;
 								console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    Notification registration text : ' + text);
-								window.localStorage.setItem('register_for_notifs','yes');
+								window.sessionStorage.setItem('register_for_notifs','yes');
 							}
 					});
 				//}
@@ -172,17 +172,23 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 // START push Notification :////////////////////////////////////////////////////////////////
-			if(window.localStorage.getItem('register_for_notifs') == null)
+			var networkState = navigator.connection.type;
+			if (networkState == Connection.NONE) {
+			
+			}
+			else
 			{
-				pushNotification = window.plugins.pushNotification;
-				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    register_for_notifs : no // ' + device.platform);
-				if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
-					pushNotification.register(successHandler,errorHandler,{"senderID":"804625540618","ecb":"onNotificationGCM"});
-				} else {
-					pushNotification.register(tokenHandler,errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"onNotificationGCM"});//"onNotificationAPN"});
+				if(window.sessionStorage.getItem('register_for_notifs') == null)
+				{
+					pushNotification = window.plugins.pushNotification;
+					console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    register_for_notifs : no // ' + device.platform);
+					if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
+						pushNotification.register(successHandler,errorHandler,{"senderID":"804625540618","ecb":"onNotificationGCM"});
+					} else {
+						pushNotification.register(tokenHandler,errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"onNotificationGCM"});//"onNotificationAPN"});
+					}
 				}
 			}
-
 			function tokenHandler(result) {
 				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    Notification Callback Success! Result (ios) = '+result);
 				//if(register_for_notifs){
@@ -194,7 +200,7 @@
 							{
 								//last_articles_version = text;
 								console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    Notification registration text : ' + text);
-								window.localStorage.setItem('register_for_notifs','yes');
+								window.sessionStorage.setItem('register_for_notifs','yes');
 							}
 					});
 				//}
@@ -225,7 +231,7 @@
 				delta = (winH - boxH)/2;
 			}
 			if(delta>65)
-				delta = delta *1.1;
+				delta = delta *1;
 			box_Object.css("top",delta);
 			//alert(delta);
 		});
