@@ -126,56 +126,56 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 		function onDeviceReady() {
+		
 			var networkState = navigator.connection.type;
 			//alert(1);
-			if (networkState != Connection.NONE) {
-				//alert(2);
-				if(window.localStorage.getItem('RunCounter') == null)
-				{
-					//alert(3);
-					window.localStorage.setItem('RunCounter',"1");
-				}
-				var counter = parseInt(window.localStorage.getItem('RunCounter')) + 0;
-				//alert(4);
-				//alert(counter);
+			if(window.sessionStorage.getItem('session_rand') == null)
+			{
+				window.sessionStorage.setItem('session_rand',Math.random());
 				
-				if(counter == 1	||	counter == 3)
-				{
-					//alert(5);
-					counter = counter + 1;
-					window.localStorage.setItem('RunCounter',counter);
-					if ( device.platform == 'iOS' )
+				if (networkState != Connection.NONE) {
+					if(window.localStorage.getItem('RunCounter') == null)
 					{
-						//alert(6);
-						$(".backimage").css("filter","blur(8px)");
+						window.localStorage.setItem('RunCounter',"1");
 					}
-					navigator.notification.confirm(
-						'خواهشمندیم جهت تداوم ارتباط بین ما و شما ، فرم ثبت نام را تکمیل بفرمایید:',	// message
-						GotoRegisterConfirm,						// callback
-						'توجه',										// title
-						['باشه','شاید بعداً']						// buttonName
-					);
-					function GotoRegisterConfirm(buttonIndex) {
-						if(buttonIndex==1)
+					var counter = parseInt(window.localStorage.getItem('RunCounter')) + 0;
+					
+					if(counter == 1	||	counter == 3)
+					{
+						counter = counter + 1;
+						window.localStorage.setItem('RunCounter',counter);
+						if ( device.platform.toLowerCase() == 'ios' )
 						{
-							window.location.href = "register.html";
+							alert();
+							$(".backimage").css("filter","blur(18px)");
 						}
-						else
-						{
-							if ( device.platform == 'iOS' )
+						navigator.notification.confirm(
+							'خواهشمندیم جهت تداوم ارتباط بین ما و شما ، فرم ثبت نام را تکمیل بفرمایید:',	// message
+							GotoRegisterConfirm,						// callback
+							'توجه',										// title
+							['باشه','شاید بعداً']						// buttonName
+						);
+						function GotoRegisterConfirm(buttonIndex) {
+							if(buttonIndex==1)
 							{
-								$(".backimage").css("filter","blur(0px)");
+								window.location.href = "register.html";
+							}
+							else
+							{
+								if ( device.platform.toLowerCase() == 'ios' )
+								{
+									$(".backimage").css("filter","blur(0px)");
+								}
 							}
 						}
 					}
-				}
-				else
-				{
-					counter = counter + 1;
-					window.localStorage.setItem('RunCounter',counter);
+					else
+					{
+						counter = counter + 1;
+						window.localStorage.setItem('RunCounter',counter);
+					}
 				}
 			}
-			//alert(7);
 			/*
 			$("body").swipe({
 				swipe:function(event, direction, distance, duration, fingerCount){
@@ -193,11 +193,6 @@
 			});
 			*/
 			
-			if(window.sessionStorage.getItem('session_rand') == null)
-			{
-				window.sessionStorage.setItem('session_rand',Math.random());				
-			}
-
 			if(window.localStorage.getItem('uuid') == null)
 				window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
 			else
@@ -266,8 +261,11 @@
 			//alert("uniqueDeviceIDfail" + uuid);
 		};
 		$(window).load(function() {		
-			$(".mypreload").html("");
-			
+			//$(".mypreload").html("");
+			setTimeout(function(){
+				$(".mypreload").html("");
+			}, 600);
+
 			
 			winH = $(window).height();
 			box_Object = $("#Menu_table");
@@ -375,7 +373,7 @@ body{background:#322958;overflow-x: hidden;}
 <body onload="init();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="body">
 		<div class="container " id="container" >
 				<div id="ajax" class="mypreload">
-					<div style="z-index: 1000; border: medium none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: #f0f0f0; opacity: 1; cursor: default; position: fixed;overflow:visible;" class="blockUI blockOverlay"></div>
+					<div style="z-index: 1000; border: medium none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: #322958; opacity: 1; cursor: default; position: fixed;overflow:visible;" class="blockUI blockOverlay"></div>
 					<div style="z-index: 1011; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 28%; left: 0%; text-align: center;border: medium none;overflow:visible;" class="blockUI blockMsg blockPage"><img src="images/preloader.gif"></div>
 					<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 				</div>
