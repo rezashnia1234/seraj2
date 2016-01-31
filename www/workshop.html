@@ -16,7 +16,7 @@
     <script src="js/fastclick.js"></script>
     <script src="js/back_btn.js"></script>
     <script src="js/jquery.md5.js"></script>
-    <script src="js/download.js"></script>
+    <!--<script src="js/download.js"></script>-->
 
 	<script>
 		
@@ -25,7 +25,6 @@
 
 		}
 		function onDeviceReady() {
-		
 			var networkState = navigator.connection.type;
 			if (networkState != Connection.NONE)
 			{
@@ -75,6 +74,7 @@
 				{
 					$(".target_image").attr("src",window.localStorage.getItem('WorkshopImage'));
 					$(".target_image").css("display","block");
+					$(".mypreload").html("");
 				}
 				else
 				{
@@ -104,7 +104,6 @@
 				window.localStorage.setItem('downloaded_files',JSON.stringify(["786","110"]));	
 			}
 			if(window.localStorage.getItem('download_address') == null){
-				
 				window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, 
 					function(fs) {
 						window.localStorage.setItem('download_address',fs.root.toURL());
@@ -296,12 +295,12 @@
 			}
 			
 		}
+		
+		
 		$(document).ready(function() {
 			setTimeout(function(){
 				//$(".mypreload").html("");
 			}, 600);
-			
-			
 		});
 		function temp_function() {
 			// do something
