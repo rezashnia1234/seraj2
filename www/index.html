@@ -146,8 +146,7 @@
 						window.localStorage.setItem('RunCounter',counter);
 						if ( device.platform.toLowerCase() == 'ios' )
 						{
-							alert();
-							$(".backimage").css("filter","blur(18px)");
+							$(".backimage").addClass("blur");
 						}
 						navigator.notification.confirm(
 							'خواهشمندیم جهت تداوم ارتباط بین ما و شما ، فرم ثبت نام را تکمیل بفرمایید:',	// message
@@ -164,7 +163,7 @@
 							{
 								if ( device.platform.toLowerCase() == 'ios' )
 								{
-									$(".backimage").css("filter","blur(0px)");
+									$(".backimage").removeClass("blur");
 								}
 							}
 						}
@@ -367,6 +366,13 @@ body{background:#322958;overflow-x: hidden;}
 }
 .backimage {
   transition: all 300ms ease 0ms;
+}
+.backimage.blur{
+  -webkit-filter: blur(30px);
+  -moz-filter: blur(30px);
+  -o-filter: blur(30px);
+  -ms-filter: blur(30px);
+  filter: blur(30px);
 }
 </style>	
 </head>

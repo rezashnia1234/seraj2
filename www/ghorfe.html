@@ -44,8 +44,9 @@
 		}
 
 		$(window).load(function() {
-			$(".mypreload").html("");
-			
+			setTimeout(function(){
+				$(".mypreload").html("");
+			}, 600);			
 			
 			winH = $(window).height();
 			box_Object = $("#Menu_table");
