@@ -127,18 +127,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 		function onDeviceReady() {
 			var networkState = navigator.connection.type;
+			alert(1);
 			if (networkState != Connection.NONE) {
+				alert(2);
 				if(window.localStorage.getItem('RunCounter') == null)
 				{
+					alert(3);
 					window.localStorage.setItem('RunCounter',"1");
 				}
 				var counter = window.localStorage.getItem('RunCounter') + 0;
+				alert(4);
 				if(counter == 1	||	counter == 3)
 				{
+					alert(5);
 					counter = counter + 1;
 					window.localStorage.setItem('RunCounter',counter);
 					if ( device.platform == 'iOS' )
 					{
+						alert(6);
 						$(".backimage").css("filter","blur(8px)");
 					}
 					navigator.notification.confirm(
@@ -167,6 +173,7 @@
 					window.localStorage.setItem('RunCounter',counter);
 				}
 			}
+			alert(7);
 			/*
 			$("body").swipe({
 				swipe:function(event, direction, distance, duration, fingerCount){
