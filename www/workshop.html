@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <title></title>
+	
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css" />
+	<link rel="stylesheet" type="text/css" href="css/progress.bar.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/scale-with.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/back_btn.js"></script>
+    <script src="js/jquery.md5.js"></script>
+    <script src="js/download.js"></script>
+
+	<script>
+		
+		function init() {	
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+		}
+		function onDeviceReady() {
+		
+			var networkState = navigator.connection.type;
+			if (networkState != Connection.NONE)
+			{
+				$.ajax({
+						url: "http://app.sobhane.ir/news/out.php?act=workshop",
+						type: "POST",
+						data: {
+							testdata: "786"
+						},
+						async: true,
+						success : function(text)
+						{
+							var obj = jQuery.parseJSON( text );
+							//alert( obj.id );
+							//alert( obj.image );
+							//$(".target_image").css("display","block");
+							//$(".target_image").attr("src",obj.image);
+							play_or_download(obj.image,"png");
+							
+							$(".mypreload").html("");
+						},
+						error: function(jqXHR, exception) {
+							if (jqXHR.status === 0) {
+								$('.container').html('در اتصال شما به اینترنت مشکلی به وجود آمده است ، امکان نمایش محتوا وجود ندارد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (jqXHR.status == 404) {
+								$('.container').html('صفحه مورد نظر شما یافت نشد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (jqXHR.status == 500) {
+								$('.container').html('Internal Server Error [500].<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'parsererror') {
+								$('.container').html('Requested JSON parse failed.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'timeout') {
+								$('.container').html('Time out error.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'abort') {
+								$('.container').html('Ajax request aborted.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else {
+								$('.container').html('Uncaught Error.\n' + jqXHR.responseText + '<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							}
+						},
+						//error : function (request, status, error) {
+						//	alert(request.responseText);
+						//}
+				});
+			}
+			else
+			{
+				if(window.localStorage.getItem('WorkshopImage') != null)
+				{
+					$(".target_image").attr("src",window.localStorage.getItem('WorkshopImage'));
+					$(".target_image").css("display","block");
+				}
+				else
+				{
+					navigator.notification.alert(
+						'شما برای مشاهده این صفحه، به اینترنت نیاز دارید',  // message
+						goto_home,         // callback
+						'اخطار',            // title
+						'تائید'                  // buttonName
+					);
+				}
+			}
+
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			if(window.localStorage.getItem('downloaded_files') == null){
+				window.localStorage.setItem('downloaded_files',JSON.stringify(["786","110"]));	
+			}
+			if(window.localStorage.getItem('download_address') == null){
+				
+				window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, 
+					function(fs) {
+						window.localStorage.setItem('download_address',fs.root.toURL());
+					}, function(e) {
+						alert('failed to get fs');
+						alert(JSON.stringify(e));
+					}
+				);
+			}
+			
+			function play_or_download(URL,Extension) {
+				console.log("play_or_download URL: " + URL);
+				console.log("play_or_download Extension: " + Extension);
+
+				if (device.platform == 'iOS')
+				{
+					downloadPath = "cdvfile://localhost/persistent/";
+					window.localStorage.setItem('download_address',downloadPath);
+				}
+				
+				downloadPath = window.localStorage.getItem('download_address') + $.md5(URL) + "." + Extension;
+				console.log("play_or_download : " + downloadPath);
+				if(check_download(URL))
+				{
+					console.log("play_or_download : check_download");
+					$(".target_image").css("display","block");
+					$(".target_image").attr("src",downloadPath);
+					//playAudio_new(downloadPath,true);
+					//var media = new Media(downloadPath, null, function(e) { alert(JSON.stringify(e));});
+					//media.play();
+				}
+				else
+				{
+					console.log("play_or_download : start_download");
+					start_download(URL,Extension);
+				}
+			}
+				
+			function start_download(URL,Extension) {
+				console.log("start_download check internet");
+				networkState = navigator.connection.type;
+				if (networkState == Connection.NONE) {
+					console.log("start_download : NO internet");
+					navigator.notification.alert(
+						'شما برای اینکار به اینترنت نیاز دارید',  // message
+						goto_home,         // callback
+						'اخطار',            // title
+						'تائید'                  // buttonName
+					);
+				}
+				else{
+					console.log("start_download : we have internet");
+
+					console.log("start_download URL: " + URL);
+					console.log("start_download Extension: " + Extension);
+					
+					var FileTransfer_OBJ = new FileTransfer();
+					var uri = encodeURI(URL + "?" + Math.random());
+					
+					if (device.platform == 'iOS')
+					{
+						downloadPath = "cdvfile://localhost/persistent/";
+						window.localStorage.setItem('download_address',downloadPath);
+					}
+					
+					$('.progress-bar-parent').css("display","block");
+					
+					downloadPath = window.localStorage.getItem('download_address') + $.md5(URL) + "." + Extension;
+					console.log("start_download : " + downloadPath);
+					
+					FileTransfer_OBJ.onprogress = function(progressEvent) {
+						if (progressEvent.lengthComputable) {
+							var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+							$('#status').html(perc + "% بارگذاری شد...");
+							$('.progress-bar-percent').css('width',perc + "%");
+							//progress_bar_element.css('width',perc);
+						} else {
+							$('#status').html($('#status').html() + ".");
+							//progress_bar_element.css('width',progress_bar_element.width()+1);
+							$('.progress-bar-percent').css('width',$('.progress-bar-parent').find('span').width()+1);
+						}
+					};
+					
+					FileTransfer_OBJ.download(uri, downloadPath, 
+						function(entry) {	
+							$('#status').html("");
+							$('.progress-bar-parent').find('span').css('width','2%');
+							console.log("start_download : done");
+							temp_array = JSON.parse(window.localStorage.getItem('downloaded_files'));
+							temp_array.push($.md5(URL));
+							window.localStorage.setItem('downloaded_files',JSON.stringify(temp_array));	
+							
+							
+							Extension = "png";
+							downloadPath = window.localStorage.getItem('download_address') + $.md5(URL) + "." + Extension;
+							window.localStorage.setItem('WorkshopImage',downloadPath);
+							$(".target_image").css("display","block");
+							$(".target_image").attr("src",downloadPath);
+							$('.progress-bar-parent').css("display","none");				
+						}, 
+						function(error) {
+							//alert('Crap something went wrong...');	
+							//alert(JSON.stringify(error));
+							navigator.notification.alert(
+								'خطا در دانلود فایل',  // message
+								goto_home,         // callback
+								'اخطار',            // title
+								'تائید'                  // buttonName
+							);
+							$('.progress-bar-parent').find('span').css('width','2%');
+							$('.progress-bar-percent').css('width',"");
+							$('.progress-bar-parent').css("display","none");
+						},
+						true
+					);
+					
+					$("#abort").click( function(i) {
+						FileTransfer_OBJ.abort();
+						$('.progress-bar-parent').find('span').css('width','2%');
+						$('.progress-bar-percent').css('width',"");
+						$('.progress-bar-parent').css("display","none");
+						window.location.href = "index.html";
+					});
+					
+				}
+			}
+			
+			function check_download(URL) {
+				console.log("check_download URL: " + URL);
+				var temp_array = JSON.parse(window.localStorage.getItem('downloaded_files'));
+				console.log("check_download Extension: " + window.localStorage.getItem('downloaded_files'));
+				if($.inArray($.md5(URL),temp_array) != -1)
+				{
+					console.log("check_download true");
+					return true;
+				}
+				else
+				{
+					console.log("check_download false");
+					return false;
+				}
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			if ( device.platform == 'Android' ){//Android,iOS,win7=WinCE,win8=Win32NT
+				document.addEventListener("backbutton", go_back, false);
+			}
+			
+		}
+		$(document).ready(function() {
+			setTimeout(function(){
+				//$(".mypreload").html("");
+			}, 600);
+			
+			
+		});
+		function temp_function() {
+			// do something
+		}
+		function goto_home() {
+			window.location.href = "index.html";
+		}
+	</script>
+<style>
+.container{
+	width:100%;
+	height:800px;
+	overflow:hidden;
+}
+.target_image{display:none;)
+</style>
+	
+</head>
+<body onload="init();">
+	<div id="ajax" class="mypreload">
+		<div style="z-index: 1000; border: medium none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: #332958; opacity: 1; cursor: default; position: fixed;overflow:visible;" class="blockUI blockOverlay"></div>
+		<div style="z-index: 1011; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 28%; left: 0%; text-align: center;border: medium none;overflow:visible;" class="blockUI blockMsg blockPage"><img src="images/preloader.gif"></div>
+		<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
+	</div>
+	<div class="progress-bar-parent">
+		<div class="progress-bar green glow">
+			<span class="progress-bar-percent" style="width: 2%"></span>
+			<div id="status"></div><br/>
+			<input type="button" id="abort" value="انصراف" />
+		</div>
+	</div>
+<div class="container">
+	<div class="main_content">
+		<img class="target_image" src="images/main_contactus.png" >
+
+
+
+	</div>
+</div>
+</body>
+</html>
