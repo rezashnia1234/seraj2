@@ -126,6 +126,47 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 		function onDeviceReady() {
+			var networkState = navigator.connection.type;
+			if (networkState != Connection.NONE) {
+				if(window.localStorage.getItem('RunCounter') == null)
+				{
+					window.localStorage.setItem('RunCounter',"1");
+				}
+				var counter = window.localStorage.getItem('RunCounter') + 0;
+				if(counter == 1	||	counter == 3)
+				{
+					counter = counter + 1;
+					window.localStorage.setItem('RunCounter',counter);
+					if ( device.platform == 'iOS' )
+					{
+						$(".backimage").css("filter","blur(8px)");
+					}
+					navigator.notification.confirm(
+						'خواهشمندیم جهت تداوم ارتباط بین ما و شما ، فرم ثبت نام را تکمیل بفرمایید:',	// message
+						GotoRegisterConfirm,						// callback
+						'توجه',										// title
+						['باشه','شاید بعداً']						// buttonName
+					);
+					function GotoRegisterConfirm(buttonIndex) {
+						if(buttonIndex==1)
+						{
+							window.location.href = "register.html";
+						}
+						else
+						{
+							if ( device.platform == 'iOS' )
+							{
+								$(".backimage").css("filter","blur(0px)");
+							}
+						}
+					}
+				}
+				else
+				{
+					counter = counter + 1;
+					window.localStorage.setItem('RunCounter',counter);
+				}
+			}
 			/*
 			$("body").swipe({
 				swipe:function(event, direction, distance, duration, fingerCount){
@@ -170,7 +211,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 // START push Notification :////////////////////////////////////////////////////////////////
-			var networkState = navigator.connection.type;
 			if (networkState == Connection.NONE) {
 			
 			}
@@ -216,7 +256,7 @@
 		{
 			//alert("uniqueDeviceIDfail" + uuid);
 		};
-		$(window).load(function() {
+		$(window).load(function() {		
 			$(".mypreload").html("");
 			
 			
@@ -318,6 +358,9 @@ body{background:#322958;overflow-x: hidden;}
     user-select: none !important;
 	outline-style:none !important;
 }
+.backimage {
+  transition: all 300ms ease 0ms;
+}
 </style>	
 </head>
 <body onload="init();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="body">
@@ -335,7 +378,7 @@ body{background:#322958;overflow-x: hidden;}
 				-->
 				<div id="Menu_table" style="width:100%;" >
 					<div id="Menu_btn" style="width:100%;" >
-						<img src="images/hamid/index.png" width="100%" alt="">
+						<img class="backimage" src="images/hamid/index.png" width="100%" alt="">
 						<a class="btn btn1" href="register.html" ></a><!--register-->
 						<a class="btn btn2" href="#2" ></a><!--about us-->
 						<a class="btn btn3" href="nazarsanji.html" ></a><!--poll-->
