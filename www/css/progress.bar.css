@@ -1,5 +1,5 @@
 .progress-bar-parent {
-	background-color: rgba(2, 2, 2, 0.8);
+	background-color: #322958;
 	display: none;
 	height: 100%;
 	left: 0;
@@ -97,7 +97,7 @@
 }	
 
 .green span {
-	  background-color: #332958;
+	  background-color: #43c0b4;
 	  /*background-image: -webkit-gradient(linear, left top, left bottom, from(#a5df41), to(#4ca916));
 	  background-image: -webkit-linear-gradient(top, #a5df41, #4ca916);
 	  background-image: -moz-linear-gradient(top, #a5df41, #4ca916);

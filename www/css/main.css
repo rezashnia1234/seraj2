@@ -228,7 +228,7 @@ label.right.tell {
 img.tumb_img {
 position: absolute;
     width: 69px;
-    background-image: url(../images/tumb_sample.jpg);
+    background-image: url(../images/tumb_sample.png);
     background-size: 59px 59px;
     background-position: center;
     height: 69px;
@@ -260,7 +260,7 @@ p.akhbar_p {
     margin-left: 14px;
     height: 59px;
 }
-.akhbar_row:nth-child(2n) .akhbar_title {
+.akhbar_row:nth-child(2n) .akhbar_title ,.akhbar_row:nth-child(2n) .akhbar_p {
     text-align: left;
 }
 .akhbar_row:nth-child(2n) .akhbar_img {
@@ -269,19 +269,45 @@ p.akhbar_p {
 .akhbar_scroll {
     display: inline-block;
     /*max-height: 447px;*/
-    overflow: auto;
+    /*overflow: auto;*/
     padding-bottom: 0px;
     margin-bottom: 41px;
     margin-top: 33px;
 }
 .akhbar_inner_scroll {
     display: inline-block;
-    max-height: 447px;
+    /*max-height: 447px;*/
     overflow: auto;
     padding-bottom: 0px;
-    margin-top: 3px;
+    margin-top: 289px;
+	width: 100%;
 }
-
+.big_img_over {
+  max-height: 280px;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  max-width: 280px;
+  z-index: 9999999;
+}
+img.big_img {
+  bottom: 0;
+  max-height: 280px;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 280px;
+  width: 100%;
+}
+.big_akhbar_img{
+  margin: 0 auto;
+  max-width: 280px;
+  text-align: center;
+  width: 100%;	
+}
 
 .backbtn {
     position: absolute;
@@ -329,9 +355,7 @@ p.akhbar_p {
 
 
 /******* akhbar_inner/*********/
-img.akhbar_inner_head {
-    background-image: url(../images/tumb_sample.jpg);
-}
+
 .akhbar_inner_title{
     color: #51C1B1;
     font-size: 17px
@@ -344,6 +368,7 @@ img.akhbar_inner_head {
     padding: 10px 30px;
     color: white;
     margin-top: 14px;
+	line-height: 200%;
 }
 .dw_back.cycle_header {
     top: 0px;
@@ -563,8 +588,17 @@ img.multimedia_head {
     margin-top: 91.8501px;
 }
 img.multi_back {
-    background: url(../images/tumb_sample.jpg) no-repeat center top;
+    background: url(../images/tumb_sample.png) no-repeat center top;
     background-size: 100%;
+}
+.tumb_img_over {
+  height: 69px;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 69px;
+  z-index: 9999999;
 }
 .mult_row {
     float: right;

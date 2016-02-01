@@ -20,17 +20,13 @@
     <!--<script src="js/download.js"></script>-->
 
 	<script>
-alert(1);
 		function init() {	
 			document.addEventListener("deviceready", onDeviceReady, false);
-alert(2);
 		}
 		function onDeviceReady() {
-alert(3);
 			var networkState = navigator.connection.type;
 			if (networkState != Connection.NONE)
 			{
-alert(4);
 				$.ajax({
 						url: "http://app.sobhane.ir/news/out.php?act=workshop",
 						type: "POST",
@@ -40,7 +36,6 @@ alert(4);
 						async: true,
 						success : function(text)
 						{
-alert(10);
 							var obj = jQuery.parseJSON( text );
 							//alert( obj.id );
 							//alert( obj.image );
@@ -71,21 +66,17 @@ alert(10);
 						//	alert(request.responseText);
 						//}
 				});
-alert(9);
 			}
 			else
 			{
-alert(5);
 				if(window.localStorage.getItem('WorkshopImage') != null)
 				{
-alert(6);
 					$(".target_image").attr("src",window.localStorage.getItem('WorkshopImage'));
 					$(".target_image").css("display","block");
 					$(".mypreload").html("");
 				}
 				else
 				{
-alert(7);
 					navigator.notification.alert(
 						'شما برای مشاهده این صفحه، به اینترنت نیاز دارید',  // message
 						goto_home,         // callback
@@ -93,9 +84,7 @@ alert(7);
 						'تائید'                  // buttonName
 					);
 				}
-alert(8);
 			}
-alert(11);
 
 
 
@@ -324,7 +313,15 @@ alert(11);
 	height:800px;
 	overflow:hidden;
 }
-.target_image{display:none;)
+.target_image{display:none;}
+
+.progress-bar #notic{
+  color: white;
+  font-size: 14px;
+  height: 20px;
+  margin-top: -27px;
+  padding-bottom: 7px;
+}
 </style>
 	
 </head>
@@ -336,6 +333,7 @@ alert(11);
 	</div>
 	<div class="progress-bar-parent">
 		<div class="progress-bar green glow">
+			<div id="notic">در حال دانلود آخرین وضعیت کارگروه ها</div>
 			<span class="progress-bar-percent" style="width: 2%"></span>
 			<div id="status"></div><br/>
 			<input type="button" id="abort" value="انصراف" />
@@ -346,7 +344,7 @@ alert(11);
 		<img class="target_image" src="images/main_contactus.png" >
 
 
-
+		<a class="backbtn" href="index.html"><img src="images/backbtn.png"></a>
 	</div>
 </div>
 </body>

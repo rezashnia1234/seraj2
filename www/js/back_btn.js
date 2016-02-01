@@ -7,6 +7,12 @@
 		};
 	}
 	
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
 
 	function go_back() {
 		if(window.sessionStorage.getItem('go_to_first')=="true")
