@@ -18,10 +18,18 @@
     <script src="js/back_btn.js"></script>
     <script src="js/jquery.md5.js"></script>
     <!--<script src="js/download.js"></script>-->
+    <script src="js/hammer.min.js"></script>
+    <script src="js/main.js"></script>
 
 	<script>
 		function init() {	
 			document.addEventListener("deviceready", onDeviceReady, false);
+			
+			var mc = new Hammer(document.body);
+			mc.on("swiperight", function(ev) {
+				goto_home();
+				//if(ev.velocity>0.8){console.log(ev.type +" gesture detected.");}
+			});
 		}
 		function onDeviceReady() {
 			var networkState = navigator.connection.type;
@@ -43,23 +51,25 @@
 							//$(".target_image").attr("src",obj.image);
 							play_or_download(obj.image,"png");
 							
+							$('img').on('dragstart', function(event) { event.preventDefault();				});
+							$('a').on('dragstart', function(event) { event.preventDefault();				});
 							$(".mypreload").html("");
 						},
 						error: function(jqXHR, exception) {
 							if (jqXHR.status === 0) {
-								$('.container').html('در اتصال شما به اینترنت مشکلی به وجود آمده است ، امکان نمایش محتوا وجود ندارد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('در اتصال شما به اینترنت مشکلی به وجود آمده است ، امکان نمایش محتوا وجود ندارد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else if (jqXHR.status == 404) {
-								$('.container').html('صفحه مورد نظر شما یافت نشد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('صفحه مورد نظر شما یافت نشد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else if (jqXHR.status == 500) {
-								$('.container').html('Internal Server Error [500].<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('Internal Server Error [500].<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else if (exception === 'parsererror') {
-								$('.container').html('Requested JSON parse failed.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('Requested JSON parse failed.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else if (exception === 'timeout') {
-								$('.container').html('Time out error.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('Time out error.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else if (exception === 'abort') {
-								$('.container').html('Ajax request aborted.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('Ajax request aborted.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							} else {
-								$('.container').html('Uncaught Error.\n' + jqXHR.responseText + '<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+								$('.kargah_hole').html('Uncaught Error.\n' + jqXHR.responseText + '<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
 							}
 						},
 						//error : function (request, status, error) {
@@ -73,6 +83,9 @@
 				{
 					$(".target_image").attr("src",window.localStorage.getItem('WorkshopImage'));
 					$(".target_image").css("display","block");
+					
+					$('img').on('dragstart', function(event) { event.preventDefault();				});
+					$('a').on('dragstart', function(event) { event.preventDefault();				});
 					$(".mypreload").html("");
 				}
 				else
@@ -85,7 +98,7 @@
 					);
 				}
 			}
-
+			FastClick.attach(document.body);
 
 
 			
@@ -300,19 +313,9 @@
 				//$(".mypreload").html("");
 			}, 600);
 		});
-		function temp_function() {
-			// do something
-		}
-		function goto_home() {
-			window.location.href = "index.html";
-		}
+
 	</script>
 <style>
-.container{
-	width:100%;
-	height:800px;
-	overflow:hidden;
-}
 .target_image{display:none;}
 
 .progress-bar #notic{
@@ -339,13 +342,20 @@
 			<input type="button" id="abort" value="انصراف" />
 		</div>
 	</div>
-<div class="container">
-	<div class="main_content">
-		<img class="target_image" src="images/main_contactus.png" >
 
+	<div class="kargah_hole main_content">
+		<div class="kargah_hader">
+			<img src="images/kargah_main.png" />
+		</div>
+		<div class="akhbar_content_main">
+		  <div class="akhbar_scroll">
+			<img class="target_image kargah_image" src="images/kargah_main.png" />
+		  </div>
+		</div>
 
-		<a class="backbtn" href="index.html"><img src="images/backbtn.png"></a>
+		<a class="backbtn" href="#"><img src="images/backbtn.png"></a>
+		</div>
+
 	</div>
-</div>
 </body>
 </html>

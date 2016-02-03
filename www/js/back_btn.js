@@ -37,6 +37,19 @@
 		return false;
 	}
 	
+	function temp_function() {
+		// do something
+	}
+	
+	function goto_home() {
+		window.location.href = "index.html";
+	}
+	$(document).ready(function() {
+		setTimeout(function(){
+			$('img').on('dragstart', function(event) { event.preventDefault();				});
+			$('a').on('dragstart', function(event) { event.preventDefault();				});
+		}, 600);
+	});
 	
 	
 	

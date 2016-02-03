@@ -4,7 +4,7 @@ body{
 
 }
 .main_content{
-  width: 769px;  
+  width: 769px;
   margin: 0 auto;
   text-align: center;
 }
@@ -31,15 +31,15 @@ body{
 }
 .contact_us_input.center_first::-moz-placeholder { /* Firefox 19+ */
   text-align: center;
-  color: #332958;  
+  color: #332958;
 }
 .contact_us_input.center_first:-ms-input-placeholder { /* IE 10+ */
   text-align: center;
-  color: #332958;  
+  color: #332958;
 }
 .contact_us_input.center_first:-moz-placeholder { /* Firefox 18- */
   text-align: center;
-  color: #332958;  
+  color: #332958;
 }
 
 
@@ -51,15 +51,15 @@ body{
 }
 .contact_us_input.left::-moz-placeholder { /* Firefox 19+ */
   text-align: left;
-  color: #332958;  
+  color: #332958;
 }
 .contact_us_input.left:-ms-input-placeholder { /* IE 10+ */
   text-align: left;
-  color: #332958;  
+  color: #332958;
 }
 .contact_us_input.left:-moz-placeholder { /* Firefox 18- */
   text-align: left;
-  color: #332958;  
+  color: #332958;
 }
 
 
@@ -67,15 +67,15 @@ body{
   color: #332958;
 }
 .contact_us_input.right::-moz-placeholder { /* Firefox 19+ */
-  color: #332958;  
+  color: #332958;
 }
 .contact_us_input.right:-ms-input-placeholder { /* IE 10+ */
- 
-  color: #332958;  
+
+  color: #332958;
 }
 .contact_us_input.right:-moz-placeholder { /* Firefox 18- */
 
-  color: #332958;  
+  color: #332958;
 }
 
 
@@ -92,7 +92,7 @@ body{
     top: -53px;
     position: relative;
     padding-right: 10px;
-    box-sizing: border-box;    
+    box-sizing: border-box;
 }
 .contact_us_input.left {
     margin: 0 auto;
@@ -188,7 +188,7 @@ label.right.tell {
     float: left;
 }
 
-/********* akhbar *****/ 
+/********* akhbar *****/
 .akhbar_row:last-child {
     margin-bottom: 0;
 }
@@ -214,7 +214,7 @@ label.right.tell {
     width: 100%;
     position: absolute;
     left: 2px;
-    bottom: -39px 
+    bottom: -39px
 }
 
 .akhbar_row {
@@ -250,7 +250,7 @@ p.akhbar_p {
     line-height: 19px;
 }
 .akhbar_matn {
-    width: calc(100% - 75px);
+    /*width: calc(100% - 75px);*/
     float: left;
 }
 .akhbar_img {
@@ -275,12 +275,10 @@ p.akhbar_p {
     margin-top: 33px;
 }
 .akhbar_inner_scroll {
-    display: inline-block;
-    /*max-height: 447px;*/
-    overflow: auto;
-    padding-bottom: 0px;
-    margin-top: 289px;
-	width: 100%;
+  display: inline-block;
+  padding-bottom: 0px;
+  margin-top: 39px;
+  width: 100%;
 }
 .big_img_over {
   max-height: 280px;
@@ -306,7 +304,7 @@ img.big_img {
   margin: 0 auto;
   max-width: 280px;
   text-align: center;
-  width: 100%;	
+  width: 100%;
 }
 
 .backbtn {
@@ -330,7 +328,7 @@ img.big_img {
 }
 .header_right {
     float: right;
-    width: calc(50% - 136px);
+    /*width: calc(50% - 136px);*/
     top: 135px;
     height: 100%;
     background-image: url(../images/top_right.png);
@@ -340,13 +338,15 @@ img.big_img {
 }
 .header_left {
     background-image: url(../images/top_left.png);
-    width: calc(50% - 133px);
+    /*width: calc(50% - 133px);*/
     float: left;
     display: inline-block;
     height: 100%;
     background-repeat: no-repeat;
     position: relative;
     top: 70px;
+    right: 3px
+
 }
 .akhbar_hole.main_content {
     width: 90%;
@@ -373,8 +373,8 @@ img.big_img {
 .dw_back.cycle_header {
     top: 0px;
     padding: 0 61px;
-    margin-bottom: 70px;
     margin-top: 25px;
+    right: 0
 }
 .dw_back.cycle_header .backbtn {
     top: -30px;
@@ -480,7 +480,7 @@ input[type="checkbox"]:hover:before {
     .check_row {
         width: 49%;
         margin-left: 0;
-    }   
+    }
 }
 
 
@@ -542,12 +542,12 @@ ul.main_ul li {
 ul.main_ul li {
     line-height: 24px;
     float: right;
-    clear: both;    
+    clear: both;
     font-size: 22px
 }
 ul.second_ul li {
     line-height: 20px;
-    margin: 6.2337px 0;    
+    margin: 6.2337px 0;
 }
 
 span.number {
@@ -575,7 +575,6 @@ ul.main_ul h4 {
 .multi_content {
     display: inline-block;
     width: 463px;
-    min-height: 300px;
     position: relative;
     background-image: url(../images/border.png),url(../images/border.png);
     background-repeat: repeat-y,repeat-y;
@@ -590,6 +589,8 @@ img.multimedia_head {
 img.multi_back {
     background: url(../images/tumb_sample.png) no-repeat center top;
     background-size: 100%;
+	height:125px;
+	width:169px;
 }
 .tumb_img_over {
   height: 69px;
@@ -616,11 +617,24 @@ img.multi_back {
 }
 .mult_row h4 {
     color: #51C1B1;
-    width: calc(100% - 169px);
+    /*width: calc(100% - 169px);*/
+	width:280px;
     text-align: right;
     float: right;
-    padding-top: 40px;
+    /*padding-top: 40px;*/
     font-size:15px;
+
+	height: 97px;
+	padding-top: 16px;
+	display: table;
+}
+.mult_row h4 a {
+	color: #51c1b1 !important;
+	display: table-cell;
+	float: none !important;
+	left: auto !important;
+	right: auto !important;
+	vertical-align: middle;
 }
 .multimedia_hole .dw_back.cycle_header {
     margin-top: 10px;
@@ -643,3 +657,121 @@ img.multi_back {
 }
 
 
+
+
+
+/*new css about page */
+.about_hader {
+  display             : inline-block;
+  position            : relative;
+  top                 : 53px;
+  width               : 100%;
+  height              : 300px;
+  background-image    : url(../images/main_about.png);
+  background-repeat   : no-repeat;
+  background-position : center;
+}
+.header_left.about {
+  display           : inline-block;
+  position          : relative;
+  top               : 202px;
+  /*width             : calc(50% - 133px);*/
+  height            : 100%;
+  float             : left;
+  background-image  : url(../images/top_left.png);
+  background-repeat : no-repeat;
+}
+.header_right{
+  top: 135px !important;
+
+}
+.about_scroll {
+    text-align: right;
+    color: white;
+    line-height: 30px;
+    /*height: 574.47px;*/
+}
+
+
+
+
+/*kargah*/
+.kargah_hole.main_content {
+    width: 632px;
+}
+.kargah_hader {
+    top: 27px;
+    margin-top: 51.3464px;
+}
+img.kargah_image {
+    display: inline-block;
+    width: 100%;
+}
+
+
+
+/*photos*/
+.photos_inner_hole.main_content {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+}
+
+.my-gallery {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+.my-gallery img {
+  width: 100%;
+  height: 106px;
+  border-radius: 10px;
+}
+.my-gallery figure {
+      display: inline-block;
+      float: none;
+    margin: 0 40px 40px 0;
+      width: 180px;
+      height: 106px;
+      border: 3px white dashed;
+      border-radius: 10px;
+}
+.my-gallery figcaption {
+  display: none;
+}
+.pswp__caption {
+    display: none;
+}
+.pswp__ui {
+    -webkit-font-smoothing: auto;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1550;
+    top: 20px;
+    position: relative;
+}
+.akhbar_inner_content_main {
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+}
+h4.photos_title {
+    text-align: center;
+    margin-top: -90px;
+    margin-bottom: 50px;
+    color: #58C3B9;
+    font-size: 17px;
+}
+
+.photos_inner_head{
+  max-width: 521px;
+  width: 100%;
+}
+@media screen and (max-width: 500px){
+  .my-gallery figure {
+      margin: 0 0 40px 0;
+  }
+}
