@@ -230,11 +230,11 @@ label.right.tell {
 }
 img.tumb_img {
 	position: absolute;
-    width: 60px;
+    width: 70px;
     background-image: url(../images/tumb_sample.png);
     background-size: 59px 59px;
     background-position: center;
-    height: 60px;
+    height: 70px;
     right: 0;
     top: 0;
     background-repeat: no-repeat;
@@ -245,12 +245,14 @@ h4.akhbar_title {
     color: #51C1B1;
     font-size: 15px;
     margin-bottom: 9px;
+    text-align: justify;
 }
 p.akhbar_p {
     color: white;
     text-align: right;
     font-size: 13px;
     line-height: 19px;
+text-align: justify;
 }
 .akhbar_matn {
     /*width: calc(100% - 75px);*/
@@ -258,10 +260,10 @@ p.akhbar_p {
 }
 .akhbar_img {
     float: right;
-    width: 60px;
+    width: 70px;
     position: relative;
     margin-left: 14px;
-    height: 60px;
+    height: 70px;
 	overflow:hidden;
 }
 .akhbar_row:nth-child(2n) .akhbar_title ,.akhbar_row:nth-child(2n) .akhbar_p {
@@ -269,11 +271,11 @@ p.akhbar_p {
 }
 .akhbar_row:nth-child(2n) a{
 	text-align: left;
-	
+
 }
 .akhbar_row:nth-child(2n) .akhbar_matn{
 	float: left;
-	
+
 }
 .akhbar_row:nth-child(2n) .akhbar_img {
     float: left;
@@ -386,8 +388,15 @@ img.big_img {
     top: 0px;
     padding: 0 61px;
     margin-top: 25px;
-    right: 0
+    right: 0;
+        max-width: 300px;
 }
+.multimedia_main .dw_back.cycle_header  {
+max-width: none;
+
+}
+
+
 .dw_back.cycle_header .backbtn {
     top: -30px;
 }
@@ -408,10 +417,12 @@ img.big_img {
 }
 img.nazarsanji_head {
     margin-top: 112.317px;
+    max-width: 435px;
+    width: 100%;
 }
 h3.nazar_title {
 color: #51C1B1;
-    text-align: right;
+    text-align: justify;;
     background: url(../images/nazarsanji_title.png) no-repeat right;
     height: 44px;
     line-height: 30px;
@@ -434,7 +445,7 @@ color: #51C1B1;
     margin: 10px auto;
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
     -webkit-appearance: none;
     height: 1em;
     width: 1em;
@@ -446,11 +457,11 @@ input[type="checkbox"] {
     border: 2px solid #51C1B1;
 }
 
-input[type="checkbox"]:checked {
+input[type="radio"]:checked {
  background-color:#51C1B1;
 }
 
-input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+input[type="radio"]:before, input[type="radio"]:checked:before {
  position:absolute;
  top:0;
  left:0;
@@ -462,7 +473,7 @@ input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
 }
 
 
-input[type="checkbox"]:hover:before {
+input[type="radio"]:hover:before {
  background:#51C1B1;
 }
 
@@ -473,8 +484,9 @@ input[type="checkbox"]:hover:before {
 }
 .check_row input {
     position: relative;
-    top: 7px;
-    outline: none
+    top: 0;
+    outline: none;
+    float: right
 }
 .check_row:last-child {
     margin-left: 0;
@@ -482,11 +494,32 @@ input[type="checkbox"]:hover:before {
 .nazarsanji_hole.main_content {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 0 20px 0 5px;
 }
 
 .nazarsanji_content_main .dw_back {
     margin-top: 60px;
+    max-width: 300px;
+}
+span.submit_padding {
+  width: 100px;
+  display: inline-block;
+  height: 49px;
+  padding: 4px;
+  background: #4EB6AA;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-top: 20px
+}
+
+button.nazar_submit {
+    border: 2px dashed #2a3457;
+    background: transparent;
+    color: #332958;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    font-size: 20px
 }
 @media screen and (max-width: 460px){
     .check_row {
@@ -616,12 +649,12 @@ img.multi_back {
 }
 */
 .tumb_img_over {
-	height: 64px;
+	height: 74px;
 	margin: auto;
 	position: absolute;
 	right: -1px;
 	top: -1px;
-	width: 64px;
+	width: 74px;
 	z-index: 9999999;
 }
 .mult_row {
@@ -720,7 +753,8 @@ img.multi_back {
 
 /*kargah*/
 .kargah_hole.main_content {
-    width: 632px;
+    max-width: 632px;
+    width: 90%;
 }
 .kargah_hader {
     top: 27px;
@@ -730,7 +764,36 @@ img.kargah_image {
     display: inline-block;
     width: 100%;
 }
+.kargah_hader {
+    width: 100%;
+    height: 300px;
+    background-image: url(../images/kargah_main.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: relative;
+    top: 53px;
+}
+@media screen and (max-width: 500px){
+  .kargah_hader {
 
+      background-image: url(../images/kargah_main_m.png);
+
+  }
+}
+.kargah_hader .header_right {
+    top: 60px !important;
+}
+.kargah_hole .akhbar_scroll{
+  width: 100%;
+}
+@media screen and (max-width: 445px){
+
+.akhbar_content_main{
+      background-size: 212px,258px,0,4px,4px !important;
+      padding: 10px !important;
+  }
+}
 
 
 /*photos*/

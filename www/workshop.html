@@ -30,6 +30,49 @@
 				goto_home();
 				//if(ev.velocity>0.8){console.log(ev.type +" gesture detected.");}
 			});
+/*
+				$.ajax({
+						url: "http://app.sobhane.ir/news/out.php?act=workshop",
+						type: "POST",
+						data: {
+							testdata: "786"
+						},
+						async: true,
+						success : function(text)
+						{
+							var obj = jQuery.parseJSON( text );
+							//alert( obj.id );
+							//alert( obj.image );
+							//$(".target_image").css("display","block");
+							//$(".target_image").attr("src",obj.image);
+							play_or_download(obj.image,"png");
+							
+							$('img').on('dragstart', function(event) { event.preventDefault();				});
+							$('a').on('dragstart', function(event) { event.preventDefault();				});
+							$(".mypreload").html("");
+						},
+						error: function(jqXHR, exception) {
+							if (jqXHR.status === 0) {
+								$('.kargah_hole').html('در اتصال شما به اینترنت مشکلی به وجود آمده است ، امکان نمایش محتوا وجود ندارد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (jqXHR.status == 404) {
+								$('.kargah_hole').html('صفحه مورد نظر شما یافت نشد<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (jqXHR.status == 500) {
+								$('.kargah_hole').html('Internal Server Error [500].<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'parsererror') {
+								$('.kargah_hole').html('Requested JSON parse failed.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'timeout') {
+								$('.kargah_hole').html('Time out error.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else if (exception === 'abort') {
+								$('.kargah_hole').html('Ajax request aborted.<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							} else {
+								$('.kargah_hole').html('Uncaught Error.\n' + jqXHR.responseText + '<a onclick="go_back();" style="position: fixed; color: white; text-align: center; box-sizing: padding-box; top: 45%; background-color: black; z-index: 99999999; width: 100%; left: 0px; padding: 20px 0px;">بازگشت به صفحه قبل</a>');
+							}
+						},
+						//error : function (request, status, error) {
+						//	alert(request.responseText);
+						//}
+				});
+*/
 		}
 		function onDeviceReady() {
 			var networkState = navigator.connection.type;
@@ -345,7 +388,8 @@
 
 	<div class="kargah_hole main_content">
 		<div class="kargah_hader">
-			<img src="images/kargah_main.png" />
+			<div class="header_right"></div>
+			<div class="header_left"></div>
 		</div>
 		<div class="akhbar_content_main">
 		  <div class="akhbar_scroll">

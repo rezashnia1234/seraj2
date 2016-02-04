@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     var akhbar_width = $(".akhbar_row").width();
 	//alert($(".akhbar_row").width());
-    $(".akhbar_row > a").width(akhbar_width - 75);
+    $(".akhbar_row > a").width(akhbar_width - 85);
 
 
 

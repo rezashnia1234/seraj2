@@ -25,11 +25,14 @@
 
 		function init() {
 			document.addEventListener("deviceready", onDeviceReady, false);
-			var mc = new Hammer(document.body);
-			mc.on("swiperight", function(ev) {
-				go_back();
-				//if(ev.velocity>0.8){console.log(ev.type +" gesture detected.");}
-			});
+			//var mc = new Hammer(document.body);
+			var mc1 = new Hammer(document.getElementById("gallery_toch1"));
+			var mc2 = new Hammer(document.getElementById("gallery_toch2"));
+			//var mc3 = new Hammer(document.getElementById("gallery_toch3"));
+			
+			mc1.on("swiperight", function(ev) {go_back();});
+			mc2.on("swiperight", function(ev) {go_back();});
+
 /*
 				$.ajax({
 						url: "http://app.sobhane.ir/news/out.php?act=multimedia&id=" + getParameterByName("id"),
@@ -350,91 +353,86 @@
 		<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 	</div>
 	<div class="photos_inner_hole main_content">
-		<img class="photos_inner_head" src="images/photos_main.png">
+		<img id="gallery_toch1" class="photos_inner_head" src="images/photos_main.png">
 		<div class="akhbar_inner_content_main">
-		<div class="akhbar_inner_scroll">
-			<div class="akhbar_inner_content">
-				<div class="akhbar_inner_content2">
-					<h4 class="photos_title"></h4>
-					<div class="my-gallery" ></div>
+			<div class="akhbar_inner_scroll">
+				<div class="akhbar_inner_content" id="gallery_toch2" >
+					<div class="akhbar_inner_content2">
+						<h4 class="photos_title"></h4>
+						<div class="my-gallery" ></div>
+					</div>
 				</div>
 
+				<div class="dw_back cycle_header">
+					<div class="cycles"></div>
+						<a class="backbtn" href="multimedia.html"><img src="images/backbtn.png"></a>
 
-
-			<!-- Root element of PhotoSwipe. Must have class pswp. -->
-			<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-				<!-- Background of PhotoSwipe.
-					 It's a separate element, as animating opacity is faster than rgba(). -->
-				<div class="pswp__bg"></div>
-
-				<!-- Slides wrapper with overflow:hidden. -->
-				<div class="pswp__scroll-wrap">
-
-					<!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-					<!-- don't modify these 3 pswp__item elements, data is added later on. -->
-					<div class="pswp__container">
-						<div class="pswp__item"></div>
-						<div class="pswp__item"></div>
-						<div class="pswp__item"></div>
-					</div>
-
-					<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-					<div class="pswp__ui pswp__ui--hidden">
-
-						<div class="pswp__top-bar">
-
-							<!--  Controls are self-explanatory. Order can be changed. -->
-
-							<div class="pswp__counter"></div>
-
-							<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-							<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-							<!-- element will get class pswp__preloader--active when preloader is running -->
-							<div class="pswp__preloader">
-								<div class="pswp__preloader__icn">
-								  <div class="pswp__preloader__cut">
-									<div class="pswp__preloader__donut"></div>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-							<div class="pswp__share-tooltip"></div>
-						</div>
-
-						<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-						</button>
-
-						<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-						</button>
-
-						<div class="pswp__caption">
-							<div class="pswp__caption__center"></div>
-						</div>
-
-					  </div>
-
-					</div>
-
-			</div>
-
-
-
-		  </div>
-
-			<div class="dw_back cycle_header">
-				<div class="cycles"></div>
-					<a class="backbtn" href="multimedia.html"><img src="images/backbtn.png"></a>
-
-				<div class="cycles"></div>
+					<div class="cycles"></div>
+				</div>
 			</div>
 		</div>
 
 	</div>
+	
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
+		<!-- Background of PhotoSwipe.
+			 It's a separate element, as animating opacity is faster than rgba(). -->
+		<div class="pswp__bg"></div>
+
+		<!-- Slides wrapper with overflow:hidden. -->
+		<div class="pswp__scroll-wrap">
+
+			<!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+			<!-- don't modify these 3 pswp__item elements, data is added later on. -->
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+
+			<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+			<div class="pswp__ui pswp__ui--hidden">
+
+				<div class="pswp__top-bar">
+
+					<!--  Controls are self-explanatory. Order can be changed. -->
+
+					<div class="pswp__counter"></div>
+
+					<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+					<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+					<!-- element will get class pswp__preloader--active when preloader is running -->
+					<div class="pswp__preloader">
+						<div class="pswp__preloader__icn">
+						  <div class="pswp__preloader__cut">
+							<div class="pswp__preloader__donut"></div>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+					<div class="pswp__share-tooltip"></div>
+				</div>
+
+				<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+				</button>
+
+				<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+				</button>
+
+				<div class="pswp__caption">
+					<div class="pswp__caption__center"></div>
+				</div>
+
+			  </div>
+
+			</div>
+
+	</div>
 
 
 </body>
