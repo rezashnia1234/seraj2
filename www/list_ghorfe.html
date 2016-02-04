@@ -27,6 +27,12 @@
 			mc.on("swiperight", function(ev) {
 				go_back();
 			});
+			if(getParameterByName("type")=="online")
+				$(".ghorfe_content_main").css("background-image","url(images/ghorfe_title_online.png)");
+			if(getParameterByName("type")=="mobile")
+				$(".ghorfe_content_main").css("background-image","url(images/ghorfe_title_mobile.png)");
+			if(getParameterByName("type")=="game")
+				$(".ghorfe_content_main").css("background-image","url(images/ghorfe_title_game.png)");
 /*
 				$.ajax({
 						url: "http://app.sobhane.ir/news/out.php?act=ghorfe&type=" + getParameterByName("type"),
