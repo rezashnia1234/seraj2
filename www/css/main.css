@@ -297,9 +297,6 @@ text-align: justify;
 .big_img_over {
   max-height: 280px;
   margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 100%;
   max-width: 280px;
   z-index: 9999999;
@@ -384,6 +381,14 @@ img.big_img {
     margin-top: 14px;
 	line-height: 200%;
 }
+@media (max-width: 700px) {
+	.akhbar_inner_content {
+		padding: 10px 0px;
+	}
+}
+
+
+
 .dw_back.cycle_header {
     top: 0px;
     padding: 0 61px;

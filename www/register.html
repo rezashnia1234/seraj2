@@ -38,7 +38,8 @@
 		}
 		$(document).ready(function() {
 			setTimeout(function(){
-				$(".mypreload").html("");
+				//$(".mypreload").html("");
+				$(".mypreload").css("display","none");
 				$('img').on('dragstart', function(event) { event.preventDefault();				});
 				$('a').on('dragstart', function(event) { event.preventDefault();				});
 			}, 600);

@@ -67,6 +67,7 @@
 						//}
 				});
 */
+
 		}
 		function onDeviceReady() {
 			var networkState = navigator.connection.type;
@@ -115,7 +116,8 @@
 			{
 				if(window.localStorage.getItem('News' + getParameterByName("id")) != null)
 				{
-					$(".akhbar_inner_hole").html(window.localStorage.getItem('News' + getParameterByName("id")));
+					$(".akhbar_inner_hole").html(text);
+					window.localStorage.setItem('News' + getParameterByName("id"),text);
 					FastClick.attach(document.body);
 					
 					$('img').on('dragstart', function(event) { event.preventDefault();				});

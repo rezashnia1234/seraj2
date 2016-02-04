@@ -48,6 +48,7 @@
 			);
 			return false;
 		}else{
+			$(".mypreload").css("display","block");
 			$.ajax({
 				type: 'POST',
 				url: 'http://app.sobhane.ir/news/register.php', 
