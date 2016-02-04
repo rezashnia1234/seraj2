@@ -16,6 +16,7 @@
     <script src="js/back_btn.js"></script>
     <script src="js/jquery.md5.js"></script>
     <script src="js/hammer.min.js"></script>
+    <script src="js/main.js"></script>
 
 	<script>
 		
@@ -43,6 +44,7 @@
 							FastClick.attach(document.body);
 							$('img').on('dragstart', function(event) { event.preventDefault();				});
 							$('a').on('dragstart', function(event) { event.preventDefault();				});
+							setwidth();
 							$(".mypreload").html("");
 						},
 						error: function(jqXHR, exception) {
@@ -84,7 +86,7 @@
 							$(".akhbar_scroll").html(text);
 							window.localStorage.setItem('NewsList',text);
 							FastClick.attach(document.body);
-							
+							setwidth();
 							$('img').on('dragstart', function(event) { event.preventDefault();				});
 							$('a').on('dragstart', function(event) { event.preventDefault();				});
 							$(".mypreload").html("");
@@ -117,7 +119,7 @@
 				{
 					$(".akhbar_scroll").html(window.localStorage.getItem('NewsList'));
 					FastClick.attach(document.body);
-					
+					setwidth();
 					$('img').on('dragstart', function(event) { event.preventDefault();				});
 					$('a').on('dragstart', function(event) { event.preventDefault();				});
 					$(".mypreload").html("");

@@ -187,7 +187,10 @@ label.right.tell {
 .cycle_header .cycles:last-child {
     float: left;
 }
-
+.akhbar_row > a {
+    display: inline-block;
+	text-align:right;
+}
 /********* akhbar *****/
 .akhbar_row:last-child {
     margin-bottom: 0;
@@ -226,12 +229,12 @@ label.right.tell {
     margin-bottom: 20px;
 }
 img.tumb_img {
-position: absolute;
-    width: 69px;
+	position: absolute;
+    width: 60px;
     background-image: url(../images/tumb_sample.png);
     background-size: 59px 59px;
     background-position: center;
-    height: 69px;
+    height: 60px;
     right: 0;
     top: 0;
     background-repeat: no-repeat;
@@ -246,22 +249,31 @@ h4.akhbar_title {
 p.akhbar_p {
     color: white;
     text-align: right;
-    font-size: 10px;
+    font-size: 13px;
     line-height: 19px;
 }
 .akhbar_matn {
     /*width: calc(100% - 75px);*/
-    float: left;
+    float: right;
 }
 .akhbar_img {
     float: right;
     width: 60px;
     position: relative;
     margin-left: 14px;
-    height: 59px;
+    height: 60px;
+	overflow:hidden;
 }
 .akhbar_row:nth-child(2n) .akhbar_title ,.akhbar_row:nth-child(2n) .akhbar_p {
     text-align: left;
+}
+.akhbar_row:nth-child(2n) a{
+	text-align: left;
+	
+}
+.akhbar_row:nth-child(2n) .akhbar_matn{
+	float: left;
+	
 }
 .akhbar_row:nth-child(2n) .akhbar_img {
     float: left;
@@ -592,14 +604,25 @@ img.multi_back {
 	height:125px;
 	width:169px;
 }
+/*
 .tumb_img_over {
-  height: 69px;
+  height: 60px;
   margin: auto;
   position: absolute;
   right: 0;
   top: 0;
-  width: 69px;
+  width: 60px;
   z-index: 9999999;
+}
+*/
+.tumb_img_over {
+	height: 64px;
+	margin: auto;
+	position: absolute;
+	right: -1px;
+	top: -1px;
+	width: 64px;
+	z-index: 9999999;
 }
 .mult_row {
     float: right;

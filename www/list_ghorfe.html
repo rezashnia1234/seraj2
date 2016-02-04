@@ -82,6 +82,8 @@
 
 		}
 		function onDeviceReady() {
+			//alert(getParameterByName("type"));
+			
 			var networkState = navigator.connection.type;
 			if (networkState != Connection.NONE)
 			{
@@ -94,12 +96,13 @@
 						async: true,
 						success : function(text)
 						{						
-							$(".akhbar_inner_hole").html(text);
+							$(".main_ul").html(text);
 							window.localStorage.setItem('ghorfe' + getParameterByName("type"),text);
 							FastClick.attach(document.body);
 							
 							$('img').on('dragstart', function(event) { event.preventDefault();				});
 							$('a').on('dragstart', function(event) { event.preventDefault();				});
+							
 							$(".main_ul li").click(function(){
 								$(".second_ul").css("display","none");
 								$(this).find(".second_ul").toggle();
@@ -109,6 +112,7 @@
 								var content_height = (calcheight + main_height + def_line_h);
 								$(".center_line").height((content_height));
 							});
+							
 							$(".mypreload").html("");
 						},
 						error: function(jqXHR, exception) {
@@ -137,11 +141,12 @@
 			{
 				if(window.localStorage.getItem('ghorfe' + getParameterByName("type")) != null)
 				{
-					$(".akhbar_inner_hole").html(window.localStorage.getItem('ghorfe' + getParameterByName("type")));
+					$(".main_ul").html(text);
 					FastClick.attach(document.body);
 					
 					$('img').on('dragstart', function(event) { event.preventDefault();				});
 					$('a').on('dragstart', function(event) { event.preventDefault();				});
+					
 					$(".main_ul li").click(function(){
 						$(".second_ul").css("display","none");
 						$(this).find(".second_ul").toggle();
@@ -151,6 +156,7 @@
 						var content_height = (calcheight + main_height + def_line_h);
 						$(".center_line").height((content_height));
 					});
+					
 					$(".mypreload").html("");
 				}
 				else

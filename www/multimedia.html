@@ -27,14 +27,14 @@
 			var matrixRegex = /matrix\((-?\d*\.?\d+),\s*0,\s*0,\s*(-?\d*\.?\d+),\s*0,\s*0\)/,
 			matches = $(".main_content").css("transform").match(matrixRegex);
 			matches = matches[1]*1.3;
-			jQuery(".continer").height(jQuery(".main_content").height()*matches);
+			jQuery(".continer_gallery").height(jQuery(".main_content").height()*matches);
 			
 			var mc = new Hammer(document.body);
 			mc.on("swiperight", function(ev) {
 				goto_home();
 				//if(ev.velocity>0.8){console.log(ev.type +" gesture detected.");}
 			});
-/**/
+/*
 				$.ajax({
 						url: "http://app.sobhane.ir/news/out.php?act=multimedia",
 						type: "POST",
@@ -73,6 +73,7 @@
 						//	alert(request.responseText);
 						//}
 				});
+*/
 
 		}
 		$(document).ready(function() {
@@ -153,6 +154,7 @@
 		<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 	</div>
 	
+<div class="continer_gallery">
 	<div class="multimedia_hole main_content">
 		<img class="multimedia_head" src="images/multi_head.png">
 		<div class="multimedia_main">
@@ -214,6 +216,7 @@
 
 
 	</div>
+</div>
 
 
 

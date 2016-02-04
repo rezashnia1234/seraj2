@@ -1,10 +1,44 @@
+$(document).ready(function(){
+
+  setTimeout(function(){ setwidth(); }, 100);
+
+
+
+
+
+
+
+});
   function setwidth(){
-	$(".akhbar_content_main").css("height","auto");
+    //alert($( window ).height());
+
+    var main_width_akhbar = $(".akhbar_hader").width()/2;
+    var main_width_about = $(".about_hader").width()/2;
+    var main_width_kargah = $(".kargah_hader").width()/2;
+
+    var akhbar_width = $(".akhbar_row").width();
+	//alert($(".akhbar_row").width());
+    $(".akhbar_row > a").width(akhbar_width - 75);
+
+
+
+
+    $(".about_hader .header_left.about").width(main_width_about - 133);
+    $(".about_hader .header_right.about").width(main_width_about - 136);
+
+    $(".akhbar_hader .header_left").width(main_width_akhbar - 133);
+    $(".akhbar_hader .header_right").width(main_width_akhbar - 136);
+
+
+    $(".kargah_hader .header_left").width(main_width_kargah - 133);
+    $(".kargah_hader .header_right").width(main_width_kargah - 136);
     var screen_height = $( window ).height();
-    var content_height = $('.akhbar_content_main').height();
-    if(screen_height -300 > content_height){
-      $(".akhbar_content_main").height(screen_height - 380);
-    }
+    //var content_height = $('.akhbar_content_main').height();
+
+
+    //if(screen_height -300 > content_height){
+    //  $(".akhbar_content_main").height(screen_height - 380);
+    //}
 
 
     var content_height = $('.akhbar_inner_scroll').height();
@@ -12,9 +46,8 @@
       $(".akhbar_inner_scroll").height(screen_height - 480);
     }
 
-
     var content_height = $('.ghorfe_content').height();
-    if(screen_height -300 > content_height){
+    if(screen_height -400 > content_height){
       $(".ghorfe_content").height(screen_height - 580);
     }
 
@@ -25,19 +58,3 @@
 
 
   }
-$(document).ready(function(){
-
-  setTimeout(function(){
-		//alert($( window ).height());
-		var main_width = $(".akhbar_hader").delay(2000).width()/2;
-		var main_width = $(".about_hader").delay(2000).width()/2;
-		var akhbar_width = $(".akhbar_row").delay(2000).width();
-		$(".header_left.about").delay(2000).width(main_width - 133);
-		$(".header_left").delay(2000).width(main_width - 133);
-		$(".header_right.about").delay(2000).width(main_width - 136);
-		$(".header_right").delay(2000).width(main_width - 136);
-		$(".akhbar_matn").delay(2000).width(akhbar_width - 75);
-
-		setwidth();
-  }, 100);
-});
