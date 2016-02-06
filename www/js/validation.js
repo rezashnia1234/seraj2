@@ -51,7 +51,7 @@
 			$(".mypreload").css("display","block");
 			$.ajax({
 				type: 'POST',
-				url: 'http://app.sobhane.ir/news/register.php', 
+				url: 'http://app.irdmfestival.ir/news/register.php', 
 				data: $("form").serialize()
 			})
 			.done(function(data){
@@ -65,10 +65,11 @@
 					);
 				}else if(data == "done"){
 					// alert("با موفقیت ثبت شد");
+					window.localStorage.setItem('RunCounter',10);
 					navigator.notification.alert(
 						'اطلاعات شما با موفقیت در سامانه ثبت شد.',	// message
 						goto_home,			// callback
-						'اخطار',			// title
+						'اطلاعیه',			// title
 						'تائید'				// buttonName
 					);
 				}

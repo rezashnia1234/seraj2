@@ -52,7 +52,7 @@
 				//alert("regID = " + e.regid);
 				//if(register_for_notifs){
 					$.ajax({ type: "POST",
-							url: "http://app.sobhane.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
+							url: "http://app.irdmfestival.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
 							data: {regID : e.regid,user:window.localStorage.getItem('uuid'),OS:device.platform},
 							async: false,
 							success : function(text)
@@ -139,7 +139,7 @@
 					}
 					var counter = parseInt(window.localStorage.getItem('RunCounter')) + 0;
 					
-					if(counter == 1	||	counter == 3)
+					if(counter == 1	||	counter == 3	||	counter == 7)
 					{
 						setTimeout(function(){
 							counter = counter + 1;
@@ -235,7 +235,7 @@
 				console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    Notification Callback Success! Result (ios) = '+result);
 				//if(register_for_notifs){
 					$.ajax({ type: "POST",
-							url: "http://app.sobhane.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
+							url: "http://app.irdmfestival.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
 							data: {regID : result,user:window.localStorage.getItem('uuid'),OS:device.platform},
 							async: false,
 							success : function(text)
@@ -328,11 +328,13 @@ body{background:#322958;overflow-x: hidden;}
 }
 .btn1 {left: 41%;top: 2%;}
 .btn2 {left: 15%;top: 18%;}
+.btn22 {left: 33%;top: 46%;width: 8%;}
 .btn3-333 {left: 74%;top: 10%;width: 13%;}
 .btn4-333 {left: 11%;top: 29%;width: 13%;}
 .btn5-333 {left: 76.5%;top: 33%;width: 13%;}
 .btn6-333 {left: 18%;top: 79%;width: 13%;}
 .btn7 {left: 66%;top: 70%; width: 13%;}
+.btn77 {height: 20%;left: 42%;top: 38%;width: 15%;}
 
 .btn3 {left: 55%;top: 10%;width: 32%;height: 22%;}
 .btn5 {left: 73.5%;top: 35%;width: 18%;height: 24%;}
@@ -368,6 +370,26 @@ body{background:#322958;overflow-x: hidden;}
   -ms-filter: blur(9px);
   filter: blur(9px);
 }
+
+
+
+@media (max-width: 700px) {
+	.backimage {
+		width: 120%;
+		margin-left: -13% !important;
+		margin-top: -7% !important;
+	}
+	.btn1 {left: 37%;top: 0%;}
+	.btn2 {left: 7%;top: 14%;}
+	.btn22 {left: 28%;top: 43%;width: 8%;}
+	.btn7 {left: 67%;top: 70%; width: 14%;}
+	.btn77 {height: 20%;left: 39%;top: 35%;width: 15%;}
+
+	.btn3 {left: 56%;top: 8%;width: 35%;height: 22%;}
+	.btn5 {left: 76.5%;top: 33%;width: 19%;height: 24%;}
+	.btn4 {left: 3%;top: 27%;width: 20%;height: 34%;}
+	.btn6 {left: 11%;top: 64%;width: 50%;height: 22%;}
+}
 </style>	
 </head>
 <body onload="init();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="body">
@@ -378,7 +400,7 @@ body{background:#322958;overflow-x: hidden;}
 					<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 				</div>
 				<!--
-				<div id="small" class="a1" onclick="openURL('http://app.sobhane.ir',false,false);" >
+				<div id="small" class="a1" onclick="openURL('http://app.irdmfestival.ir',false,false);" >
 					<span id="text"><p>بسم الله الرحمن الرحیم</p></span>
 				</div>
 				<div onclick="StartScan();">00000000000000000000000000000000</div>
@@ -388,11 +410,13 @@ body{background:#322958;overflow-x: hidden;}
 						<img class="backimage" src="images/hamid/index.png" width="100%" alt="">
 						<a class="btn btn1" href="register.html" ></a><!--register-->
 						<a class="btn btn2" href="darbarema.html" ></a><!--about us-->
+						<a class="btn btn22" href="darbarema.html" ></a><!--about us-->
 						<a class="btn btn3" href="nazarsanji.html" ></a><!--poll-->
 						<a class="btn btn4" href="news-list.html" ></a><!--news-->
 						<a class="btn btn5" href="multimedia.html" ></a><!--gallery-->
 						<a class="btn btn6" href="ghorfe.html" ></a><!--ghorfe-->
 						<a class="btn btn7" href="workshop.html" ></a><!--workshop-->
+						<a class="btn btn77" href="workshop.html" ></a><!--workshop-->
 					</div>
 				</div>
 		</div>

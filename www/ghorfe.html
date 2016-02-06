@@ -120,6 +120,21 @@ body{background:#322958;overflow-x: hidden;}
     user-select: none !important;
 	outline-style:none !important;
 }
+@media (max-width: 700px) {
+	body{overflow-x: hidden;}
+	.backimage {
+		width: 116%;
+		margin-left: -7% !important;
+	}
+	.btn {
+	  width: 26%;
+	  height:12%;
+	}
+	.btn1 {left: 3%;top: 2%;}
+	.btn2 {left: 72%;top: 4%;}
+	.btn3 {left: 1%;top: 79%;width: 32%;}
+	.btn4 {left: 69%;top: 88%;width: 29%;}
+}
 </style>	
 </head>
 <body onload="init();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" id="body">
@@ -130,14 +145,14 @@ body{background:#322958;overflow-x: hidden;}
 	</div>
 	<div class="container " id="container" >
 				<!--
-				<div id="small" class="a1" onclick="openURL('http://app.sobhane.ir',false,false);" >
+				<div id="small" class="a1" onclick="openURL('http://app.irdmfestival.ir',false,false);" >
 					<span id="text"><p>بسم الله الرحمن الرحیم</p></span>
 				</div>
 				<div onclick="StartScan();">00000000000000000000000000000000</div>
 				-->
 				<div id="Menu_table" style="width:100%;" >
 					<div id="Menu_btn" style="width:100%;" >
-						<img src="images/hamid/ghorfe.png" width="100%" alt="">
+						<img src="images/hamid/ghorfe.png" width="100%" alt="" class="backimage">
 						<a class="btn btn1" href="list_ghorfe.html?type=it" ></a><!--product-->
 						<a class="btn btn2" href="list_ghorfe.html?type=online" ></a><!--product-->
 						<a class="btn btn3" href="list_ghorfe.html?type=mobile" ></a><!--product-->
