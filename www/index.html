@@ -309,7 +309,22 @@
 				
 			}
 		}
-		
+		function get_image() {
+			window.imagePicker.getPictures(
+				function(results) {
+					for (var i = 0; i < results.length; i++) {
+						console.log('Image URI: ' + results[i]);
+						alert('Image URI: ' + results[i]);
+					}
+				}, function (error) {
+					console.log('Error: ' + error);
+					alert('Error: ' + error);
+				}, {
+					maximumImagesCount: 1,
+					width: 800
+				}
+			);
+		}
 	</script>	
 
 		
@@ -399,6 +414,7 @@ body{background:#322958;overflow-x: hidden;}
 					<div style="z-index: 1011; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 28%; left: 0%; text-align: center;border: medium none;overflow:visible;" class="blockUI blockMsg blockPage"><img src="images/preloader.gif"></div>
 					<div style="z-index: 1012; position: fixed; padding: 0px; margin: 0px; width: 100%; top: 50%; left: 0%; text-align: center;border: medium none;overflow:visible;height:500px;" class="blockUI blockMsg blockPage"><img src="images/loading.png" width="70%"></div>
 				</div>
+<div onclick="get_image();" style="font-size:20px;color:#ffffff;">get_image()</div>
 				<!--
 				<div id="small" class="a1" onclick="openURL('http://app.irdmfestival.ir',false,false);" >
 					<span id="text"><p>بسم الله الرحمن الرحیم</p></span>
