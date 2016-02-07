@@ -33,7 +33,6 @@
 			var mc = new Hammer(document.body);
 			mc.on("swiperight", function(ev) {
 				goto_home();
-				//if(ev.velocity>0.8){console.log(ev.type +" gesture detected.");}
 			});
 		}
 		$(document).ready(function() {
@@ -44,11 +43,47 @@
 			}, 600);
 		});
 		function onDeviceReady() {
-			FastClick.attach(document.body);
+			var networkState = navigator.connection.type;
+			if (networkState != Connection.NONE)
+			{
+				FastClick.attach(document.body);
+			}
+			else
+			{
+				navigator.notification.alert(
+					'شما برای مشاهده این صفحه، به اینترنت نیاز دارید',	// message
+					goto_home,			// callback
+					'اخطار',			// title
+					'تائید'				// buttonName
+				);
+			}
+			
 
+			
+
+			
 			if ( device.platform == 'Android' ){//Android,iOS,win7=WinCE,win8=Win32NT
 				document.addEventListener("backbutton", goto_home, false);
 			}
+		}
+		
+		
+		
+		function get_image() {
+			window.imagePicker.getPictures(
+				function(results) {
+					for (var i = 0; i < results.length; i++) {
+						console.log('Image URI: ' + results[i]);
+						alert('Image URI: ' + results[i]);
+					}
+				}, function (error) {
+					console.log('Error: ' + error);
+					alert('Error: ' + error);
+				}, {
+					maximumImagesCount: 2,
+					width: 800
+				}
+			);
 		}
 	</script>
 
@@ -70,45 +105,8 @@
 		<div class="akhbar_content_main about" style="margin-top:-45px;">
 			<div class="about_scroll" style="direction:rtl;text-align:justify;">
 				<p>
-					جبهه فرهنگی انقلاب اسلامی با هدف جریان‌سازی، بسترسازی و فرهنگ سازی برای تولید و توسعه محتوای منطبق بر فرهنگ انقلاب اسلامی ‌در حوزه رسانه‌های دیجیتال نسبت به برگزاری نمایشگاه رسانه‌های دیجیتال انقلاب اسلامی اقدام می‌نماید.
-					<br/>
-					نمایشگاه رسانه‌های دیجیتال انقلاب اسلامی از 22 الی 27 بهمن ماه 94 در سالن های نمایشگاهی بوستان گفتگو برگزار می‌گردد و شاهد حضور گسترده عموم مردم، صاحب نظران و متخصصین در این حوزه می‌باشد.
-					<br/>
-					این نمایشگاه در چهار بخش اصلی و پنج بخش جانبی برگزار می گردد.
-					<br/>
-					<b>بخش  های اصلی:</b>
-					<br/>
-					1.    بخش رسانه های برخط<br/>
-					2.    بخش بازی و پویانمایی<br/>
-					3.    بخش نشر دیجیتال و موبایل<br/>
-					4.    بخش فناوری اطلاعات<br/>
-					<br/>
-					<b>بخش  های جانبی:</b>
-					<br/>
-					1.   زیارت مجازی<br/>
-					2.    کارگاه ها و نشست ها<br/>
-					3.   سواد فضای مجازی<br/>
-					4.   کودک و نوجوان<br/>
-					5.   کلینیک ترک اعتیاد اینترنت<br/>
-					<br/>
-					متولی برگزاری نمایشگاه های رسانه های دیجیتال انقلاب اسلامی در کشور، سازمان فضای مجازی سراج می باشد.
-					<br/>
-					آدرس: بزرگراه شیخ فضل الله نوری (غرب)، بعد از پل یادگار امام، خیابان شهید چوب تراش، جنب درب غربی ایستگاه مترو طرشت، پلاک 3، سازمان فضای مجازی سراج
-					<br/>
-					شماره تماس :
-					<a href="tel:02144296773" style="color:#ffffff;font-weight:bold;"> 4-44296773</a>
+<div onclick="get_image();" style="font-size:20px;color:#ffffff;">get_image()</div>
 
-					<br/>
-					آدرس دبیرخانه نمایشگاه: خیابان شهید مطهری، بعد از خیابان شهید مفتح، نبش خیابان اورامان، پلاک 144، واحد 6
-					<br/>
-					شماره تماس :
-					<a href="tel:02188811743" style="color:#ffffff;font-weight:bold;">88811743</a>
-					-
-					<a href="tel:02188811455" style="color:#ffffff;font-weight:bold;">88811455</a>
-					<br/>
-					سایت :
-					<span onclick="loadURL('http://www.IrdmFestival.ir');" style="color:#ffffff;font-weight:bold;"> www.IrdmFestival.ir</span>
-					<br/><br/>
 				</p>
 			</div>
 
