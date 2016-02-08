@@ -44,6 +44,7 @@
 			}, 600);
 		});
 		function onDeviceReady() {
+			window.sessionStorage.setItem('send_image_path',"");
 			var networkState = navigator.connection.type;
 			if (networkState != Connection.NONE)
 			{
@@ -90,14 +91,33 @@
 					for (var i = 0; i < results.length; i++) {
 						console.log('Image URI: ' + results[i]);
 						//alert('Image URI: ' + results[i]);
-						send_image(results[i]);
+						window.sessionStorage.setItem('send_image_path',results[i]);
+						//send_image(results[i]);
+						navigator.notification.confirm(
+							'آیا تصویر انتخاب شده را برای شرکت در مسابقه ارسال نماییم؟', // message
+							 onConfirm,            // callback to invoke with index of button pressed
+							'',           // title
+							['بله','خیر']         // buttonLabels
+						);
+						function onConfirm(buttonIndex) {
+							if(buttonIndex==1)
+							{
+								if(window.sessionStorage.getItem('send_image_path') != "")
+									send_image(window.sessionStorage.getItem('send_image_path'));
+							}
+							else
+							{
+								window.sessionStorage.setItem('send_image_path',"");
+							}
+						}
 					}
 				}, function (error) {
 					console.log('Error: ' + error);
 					//alert('Error: ' + error);
 				}, {
 					maximumImagesCount: 1,
-					width: 800
+					width: 800,
+					quality:75
 				}
 			);
 		}
@@ -213,7 +233,28 @@
 			<input type="button" id="abort" value="انصراف" />
 		</div>
 	</div>
-	
+<style>
+button.nazar_submit {
+  font-size: 18px;
+  line-height: 35px;
+}
+span.submit_padding {
+  background: #4eb6aa none repeat scroll 0 0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  height: 90px;
+  margin-top: 20px;
+  
+  max-width: 407px;
+  width: 100%;
+}
+.photo_hader {
+  margin-bottom: 36px;
+  top: 23px;
+}
+</style>
 	
 	<div class="akhbar_hole main_content">
 		<div class="photo_hader">
@@ -223,11 +264,15 @@
 		<div class="akhbar_content_main about" style="margin-top:-45px;">
 			<div class="about_scroll" style="direction:rtl;text-align:justify;">
 				<p>
-				
-	<br/><br/><br/><br/>	
-
-<div onclick="get_image();" style="font-size:20px;color:#ffffff;">get_image()</div>
-
+					<br/>
+					کاربران گرامی با ارسال عکسهایتان به دبیرخانه نمایشگاه و با نظر نهایی
+					هیات داوران ، برنده جوایز ارزنده از سومین نمایشگاه رسانه های دیجیتال 
+					انقلاب اسلامی  در مراسم اختتامیه باشید.
+					<br/>
+					<div style="width:100%;text-align:center;">
+						<span class="submit_padding"> <button class="nazar_submit" onclick="get_image();">انتخاب و ارسال تصویر از گالری تصاویر دستگاه</button></span>
+					</div>
+					<br/><br/>
 				</p>
 			</div>
 
