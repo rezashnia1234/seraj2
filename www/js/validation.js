@@ -64,6 +64,9 @@
 						'اخطار',			// title
 						'تائید'				// buttonName
 					);
+					window.localStorage.setItem('RunCounter',10);
+					window.localStorage.setItem('registerd',"yes");
+					window.localStorage.setItem('mobile',$(".mobile").val());
 				}else if(data == "done"){
 					// alert("با موفقیت ثبت شد");
 					window.localStorage.setItem('RunCounter',10);
