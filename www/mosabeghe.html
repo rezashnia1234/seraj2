@@ -90,7 +90,7 @@
 				function(results) {
 					for (var i = 0; i < results.length; i++) {
 						console.log('Image URI: ' + results[i]);
-						//alert('Image URI: ' + results[i]);
+						alert('Image URI: ' + results[i]);
 						window.sessionStorage.setItem('send_image_path',results[i]);
 						//send_image(results[i]);
 						navigator.notification.confirm(
