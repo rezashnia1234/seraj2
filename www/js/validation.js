@@ -57,6 +57,7 @@
 			.done(function(data){
 				if(data == "tekrary"){
 					// alert("تکراری است")
+					window.localStorage.setItem('RunCounter',10);
 					navigator.notification.alert(
 						'اطلاعات شما قبلا در سامانه ثبت شده است.',	// message
 						goto_home,			// callback
@@ -66,6 +67,8 @@
 				}else if(data == "done"){
 					// alert("با موفقیت ثبت شد");
 					window.localStorage.setItem('RunCounter',10);
+					window.localStorage.setItem('registerd',"yes");
+					window.localStorage.setItem('mobile',$(".mobile").val());
 					navigator.notification.alert(
 						'اطلاعات شما با موفقیت در سامانه ثبت شد.',	// message
 						goto_home,			// callback

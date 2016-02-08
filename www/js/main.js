@@ -14,6 +14,7 @@ $(document).ready(function(){
 
     var main_width_akhbar = $(".akhbar_hader").width()/2;
     var main_width_about = $(".about_hader").width()/2;
+    var main_width_photo = $(".photo_hader").width()/2;
     var main_width_kargah = $(".kargah_hader").width()/2;
 
     var akhbar_width = $(".akhbar_row").width();
@@ -25,7 +26,19 @@ $(document).ready(function(){
 
     $(".about_hader .header_left.about").width(main_width_about - 133);
     $(".about_hader .header_right.about").width(main_width_about - 136);
-
+	
+	
+	if(main_width_photo*2>350)
+	{
+		$(".photo_hader .header_left.about").width(main_width_photo - 136);
+		$(".photo_hader .header_right.about").width(main_width_photo - 136);
+	}
+	else
+	{
+		$(".photo_hader .header_left.about").width(main_width_photo - 80);
+		$(".photo_hader .header_right.about").width(main_width_photo - 80);
+	}
+	
     $(".akhbar_hader .header_left").width(main_width_akhbar - 133);
     $(".akhbar_hader .header_right").width(main_width_akhbar - 136);
 

@@ -44,6 +44,9 @@
 	function goto_home() {
 		window.location.href = "index.html";
 	}
+	function goto_register() {
+		window.location.href = "register.html";
+	}
 	$(document).ready(function() {
 		setTimeout(function(){
 			$('img').on('dragstart', function(event) { event.preventDefault();				});

@@ -63,7 +63,7 @@
 					}
 					$.ajax({ type: "POST",
 							url: "http://app.irdmfestival.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
-							data: {regID : e.regid,user:window.localStorage.getItem('uuid'),OS:device.platform,deviceModel:temp_udid},
+							data: {regID : e.regid,user:window.localStorage.getItem('uuid'),OS:device.platform},
 							async: false,
 							success : function(text)
 							{
@@ -179,7 +179,7 @@
 							}
 						}, 2500);
 					}
-					else
+					else if(counter < 8)
 					{
 						counter = counter + 1;
 						window.localStorage.setItem('RunCounter',counter);
@@ -241,7 +241,7 @@
 				//if(register_for_notifs){
 					$.ajax({ type: "POST",
 							url: "http://app.irdmfestival.ir/SMCMS_notification/RegisterDeviceIDtoDB.php", 
-							data: {regID : result,user:window.localStorage.getItem('uuid'),OS:device.platform,deviceModel:temp_udid},
+							data: {regID : result,user:window.localStorage.getItem('uuid'),OS:device.platform},
 							async: false,
 							success : function(text)
 							{
