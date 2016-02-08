@@ -267,13 +267,16 @@
 		};
 		$(window).load(function() {		
 			//$(".mypreload").html("");
+			box_Object = $("#Menu_table");
+			
+			winW = $(window).width();
+			box_Object.css("width",winW);
 			setTimeout(function(){
 				$(".mypreload").html("");
 			}, 600);
 
 			
 			winH = $(window).height();
-			box_Object = $("#Menu_table");
 			boxH = box_Object.height();
 			delta = 0;
 			if(winH>boxH)
@@ -382,7 +385,7 @@ body{background:#322958;overflow-x: hidden;width:100%;}
 	.backimage {
 		width: 120%;
 		margin-left: -13% !important;
-		margin-top: -7% !important;
+		/*margin-top: -7% !important;*/
 	}
 	.btn1 {left: 37%;top: 0%;}
 	.btn2 {left: 7%;top: 14%;}
@@ -410,7 +413,7 @@ body{background:#322958;overflow-x: hidden;width:100%;}
 				</div>
 				<div onclick="StartScan();">00000000000000000000000000000000</div>
 				-->
-				<div id="Menu_table" style="width:100%;" >
+				<div id="Menu_table" style="width:100%;overflow:hidden;" >
 					<div id="Menu_btn" style="width:100%;" >
 						<img class="backimage" src="images/hamid/index.png" width="100%" alt="">
 						<a class="btn btn1" href="register.html" ></a><!--register-->

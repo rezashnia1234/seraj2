@@ -90,20 +90,25 @@
 				function(results) {
 					for (var i = 0; i < results.length; i++) {
 						console.log('Image URI: ' + results[i]);
-						//alert('Image URI: ' + results[i]);
+						alert('Image URI: ' + results[i]);
 						window.sessionStorage.setItem('send_image_path',results[i]);
 						//send_image(results[i]);
 						navigator.notification.confirm(
 							'آیا تصویر انتخاب شده را برای شرکت در مسابقه ارسال نماییم؟', // message
-							 onConfirm,            // callback to invoke with index of button pressed
-							'',           // title
-							['بله','خیر']         // buttonLabels
+							onConfirm,				// callback to invoke with index of button pressed
+							'',						// title
+							['بله','خیر']			// buttonLabels
 						);
 						function onConfirm(buttonIndex) {
+							alert(buttonIndex);
 							if(buttonIndex==1)
 							{
+								alert("1");
 								if(window.sessionStorage.getItem('send_image_path') != "")
+								{
+									alert("2" + window.sessionStorage.getItem('send_image_path'));
 									send_image(window.sessionStorage.getItem('send_image_path'));
+								}
 							}
 							else
 							{
