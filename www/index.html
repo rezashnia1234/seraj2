@@ -289,6 +289,14 @@
 			//alert(delta);
 		});
 
+		function underconstruction() {
+			navigator.notification.alert(
+				'این بخش در حال آماده سازی می باشد و به زوده آپدیت خواهد شد',  // message
+				alertDismissed,         // callback
+				'توجه',            // title
+				'تائید'                  // buttonName
+			);
+		}
 		function go_back_index() {
 			navigator.notification.confirm(
 				'آیا تمایل به خروج از برنامه را دارید؟',	// message
@@ -430,12 +438,12 @@ body{background:#322958;overflow-x: hidden;width:100%;}
 						<a class="btn btn3" href="mosabeghe.html" ></a><!--poll-->
 						<a class="btn btn4" href="news-list.html" ></a><!--news-->
 						<a class="btn btn5" href="multimedia.html" ></a><!--gallery-->
-						<a class="btn btn6" href="ghorfe.html" ></a><!--ghorfe-->
-						<a class="btn btn66" href="ghorfe.html" ></a><!--ghorfe-->
+						<a class="btn btn6" href="#" href2="ghorfe.html" onclick="underconstruction();" ></a><!--ghorfe-->
+						<a class="btn btn66" href="#" href2="ghorfe.html" onclick="underconstruction();" ></a><!--ghorfe-->
 						<a class="btn btn7" href="workshop.html" ></a><!--workshop-->
 						<a class="btn btn77" href="workshop.html" ></a><!--workshop-->
-						<a class="btn btn8" href="map.html" ></a><!--ghorfe-->
-						<a class="btn btn88" href="map.html" ></a><!--ghorfe-->
+						<a class="btn btn8" href="#" href2="map.html" onclick="underconstruction();" ></a><!--ghorfe-->
+						<a class="btn btn88" href="#" href2="map.html" onclick="underconstruction();" ></a><!--ghorfe-->
 
 					</div>
 				</div>
